@@ -6,9 +6,9 @@ public class PlayerStateMachine : MonoBehaviour
 {
     public PlayerState currentState { get; private set; }
 
-    public void Initialize(PlayerState startState)
+    public void Initialize(PlayerState _startState)
     {
-        currentState = startState;
+        currentState = _startState;
         currentState.Enter();
     }
 
@@ -16,6 +16,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         currentState.Exit();
         currentState = _newState;
-        
+        currentState.Enter();
     }
 }
