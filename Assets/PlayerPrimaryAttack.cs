@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPrimaryAttack : PlayerState
 {
-
+    
     private int comboCounter;
     private float lastTimeAttack;
     private float comboWindow = 2;
@@ -19,14 +19,16 @@ public class PlayerPrimaryAttack : PlayerState
         if (comboCounter > 2 || Time.time > lastTimeAttack + comboWindow)
             comboCounter = 0;
         player.anim.SetInteger("ComboCounter", comboCounter);
-
+        player.SetVelocity(player.attackMovement[comboCounter].x * player.facingDir, player.attackMovement[comboCounter].y);
+        
         stateTimer = .1f;
     }
 
     public override void Exit()
     {
         base.Exit();
-
+        
+        player.StartCoroutine("BusyFor", .15f);
         comboCounter++;
         lastTimeAttack =  Time.time; 
     }
