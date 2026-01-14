@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     public PlayerWallSlideState wallSlide { get; private set; }
     public PlayerWallJumpState wallJump { get; private set; } 
     public PlayerDashState dashState { get; private set; }
-    public PlayerPrimaryAttack PrimaryAttack{get; private set;}
+    public PlayerPrimaryAttackState PrimaryAttackState{get; private set;}
 
     #endregion
     
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
         dashState = new PlayerDashState(this, stateMachine, "Dash");
         wallSlide = new PlayerWallSlideState(this, stateMachine, "WallSlide"); 
         wallJump  =  new PlayerWallJumpState(this, stateMachine, "Jump");
-        PrimaryAttack = new PlayerPrimaryAttack(this, stateMachine, "Attack");
+        PrimaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
     }
 
     private void Start()
